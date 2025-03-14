@@ -36,8 +36,6 @@ def main():
     # x 데이터는 bar_x, y 데이터는 bar_x**2로 설정합니다.
     axes[0, 1].bar(bar_x, bar_x**2)
     
-    plt.show()
-    
     """
     Multi-Bar 그래프 그리기
     """
@@ -46,18 +44,18 @@ def main():
     y = np.array([2,3,2])
     z = np.array([1,3,4])
     data1 =  [x, y, z]
-
+    
     x_ax =  np.arange(3)
     
     for i in x_ax:
         # figure의 (1,0) 위치에 Bar 그래프를 그립니다.
         # x 데이터는 x_ax, y 데이터는 각각 x,y,z로 설정합니다.
-        axes[1, 0].bar(x_ax, None, bottom=np.sum(data1[:i], axis=0))
+        axes[1, 0].bar(x_ax, data1[i], bottom=np.sum(data1[:i], axis=0))
         
     # figure의 (1,0) 위치에서 x축 데이터를 병렬적으로 설정합니다.
-    None
+    axes[1, 0].set_xticks(x_ax)
     # figure의 (1,0) 위치에서 x축 label을 'A', 'B', 'C'로 설정합니다.
-    None
+    axes[1, 0].set_xticklabels(['A', 'B', 'C'])
     
     """
     Histogram 그래프 그리기
@@ -67,7 +65,7 @@ def main():
     
     # figure의 (1,1) 위치에 Histogram 그래프를 그립니다.
     # 입력될 데이터는 data, Histogram 표현시 분할되는 개수는 50으로 설정합니다.
-    None
+    axes[1, 1].hist(data, bins=50)
     
     # figure를 저장하고 엘리스 플랫폼에서 그래프를 출력합니다.
     fig.savefig("plot.png")
