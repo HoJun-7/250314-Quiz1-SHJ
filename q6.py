@@ -12,16 +12,16 @@ print("DataFrame B \n", B)
 # 함수를 이용해서 연산을 해보세요.
 # NaN 값이 생기지 않도록 fill_value에 값을 넣어보세요
 # A + B
-add = None
+add = A.add(B, fill_value = 0)
 print(add,'\n')
 # A - B
-sub = None
+sub = A.sub(B, fill_value = 0)
 print(sub,'\n')
 # A * B
-mul = None
+mul = A.mul(B, fill_value = 0)
 print(mul,'\n')
 # A / B
-div = None
+div = A.div(B, fill_value = 0)
 print(div,'\n')
 
 
@@ -29,17 +29,17 @@ print(div,'\n')
 C = pd.DataFrame([[1,3,5],[15,10,5],[2,8,5]], index = ['a','b','c'], columns = ['d','e','f'])
 
 # c 행에 대해 오름차순 정렬
-row_C = None
+row_C = C.sort_values(by = 'c', axis=1, ascending=True) #오름차순은 True
 
 # e 열에 대해 내림차순 정렬
-column_C = None
+column_C = C.sort_values(by = 'e', axis=0, ascending=False) #내림차순은 False
 
 print(row_C,'\n')
 print(column_C,'\n')
 
 # 데이터 csv로 저장 및 불러오기
 # index를 False로 설정하면 저장할 때 추가 인덱스를 달지 않습니다.
-row_C = None
-load_C = None
+row_C = row_C.to_csv(r'C:\SHJ\Exam-250314\row_C.csv',index=False)
+load_C = pd.read_csv(r'C:\SHJ\Exam-250314\row_C.csv')
 
 print(load_C)

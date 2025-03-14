@@ -7,11 +7,14 @@ df = sns.load_dataset('tips')
 
 # countplot함수의 출력물을 sns_plot_size으로 저장
 # x축을 "size" 컬럼으로 하여 "size"에 대한 countplot을 그림
-sns_plot_size = None
+x_data = df['size']
+sns_plot_size = sns.countplot(x=x_data, data=df)
 
 # jointplot함수의 출력물을 g로 저장
 # x축은 "total_bill", y축은 "tip", 차트의 종류는 "resid"으로 하여 jointplot을 그림
-g = None
+x_data = df['total_bill']
+y_data = df['tip']
+g = sns.jointplot(x=x_data,y=y_data, data=df, kind="resid")
 
 # 출력을 위한 함수
 fig = sns_plot_size.get_figure()
